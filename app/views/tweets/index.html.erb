@@ -1,0 +1,20 @@
+<% if flash[:notice] %>
+    <%= flash[:notice] %>
+<% end %>
+
+<% @tweets.each do |t| %>
+    <div>
+    <%= t.message %>  
+     <%= distance_of_time_in_words(t.tdate, Time.current) %>前
+     <%= link_to '削除', "/tweets/#{t.id}", data: {turbo_method: :delete} %>
+    <%= link_to '表示', "/tweets/#{t.id}" %>
+    <%= link_to '編集', "/tweets/#{t.id}/edit" %>
+    <p>
+         <% if t.image.present? %>
+             <%= image_tag "/get_image/#{t.id}" %>
+        <% end %>
+    </p>
+    </div>
+    <hr>
+<% end %>
+<p><%= link_to '新規投稿', '/tweets/new' %></p>

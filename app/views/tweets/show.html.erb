@@ -1,0 +1,11 @@
+<p>
+  <strong>メッセージ：</strong>
+  <%= @tweet.message %>
+  <p>
+         <% if (@tweet.image).present? %>
+             <%= image_tag "/get_image/#{@tweet.id}" %>
+        <% end %>
+    </p>
+    </div>
+</p>
+<%= link_to 'Back', '/' %>
